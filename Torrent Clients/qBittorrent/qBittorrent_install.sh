@@ -135,6 +135,19 @@ lib_ver_check(){
 				break
 			fi
 		done
+  	elif [[ "${qb_ver}" =~ "5.0." ]]; then
+		while true
+		do
+			if [[ ! "${lib_ver}" =~ "libtorrent-v1.2." ]] && [[ ! "${lib_ver}" =~ "libtorrent-v2.0." ]]; then
+				tput sgr0; clear
+				warn "qBittorrent $qb_ver is not compatible with libtorrent $lib_ver"
+				warn "qBittorrent $qb_ver is compatible with libtorrent-v1.2.x or libtorrent-v2.0.x only"
+				warn "Please choose a compatible version"
+				lib_ver_choose
+			else
+				break
+			fi
+		done
 	fi
 }
 
