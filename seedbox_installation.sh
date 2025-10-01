@@ -108,9 +108,9 @@ install_autobrr_() {
 	## Install AutoBrr
 	# Check CPU architecture
 	if [ $(uname -m) == "x86_64" ]; then
-		wget $(curl -s https://api.github.com/repos/autobrr/autobrr/releases/latest | grep download | grep linux_x86_64 | cut -d\" -f4)
+		wget -4$(curl -4 -s https://api.github.com/repos/autobrr/autobrr/releases/latest | grep download | grep linux_x86_64 | cut -d\" -f4)
 	elif [ $(uname -m) == "aarch64" ]; then
-		wget $(curl -s https://api.github.com/repos/autobrr/autobrr/releases/latest | grep download | grep linux_arm64.tar | cut -d\" -f4)
+		wget -4 $(curl -4 -s https://api.github.com/repos/autobrr/autobrr/releases/latest | grep download | grep linux_arm64.tar | cut -d\" -f4)
 	else
 		fail "AutoBrr download failed"
 		return 1
